@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Chrip Resourses
-Route::resource('chirps', ChripController::class)->only(['index', 'store'])->middleware(['auth', 'verified']);
+Route::resource('chrips', ChripController::class)->only(['index', 'store', 'edit', 'update'])->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

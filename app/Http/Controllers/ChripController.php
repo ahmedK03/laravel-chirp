@@ -14,8 +14,8 @@ class ChripController extends Controller
      */
     public function index()
     {
-        return view('chirps.index', [
-            'chirps' => Chrip::with('user')->latest()->get(),
+        return view('chrips.index', [
+            'chrips' => Chrip::with('user')->latest()->get(),
         ]);
     }
 
@@ -41,9 +41,9 @@ class ChripController extends Controller
             'message' => 'required|string|max:255'
         ]);
 
-        $request->user()->chirps()->create($validated);
+        $request->user()->chrips()->create($validated);
 
-        return redirect(route('chirps.index'));
+        return redirect(route('chrips.index'));
     }
 
     /**
@@ -65,7 +65,11 @@ class ChripController extends Controller
      */
     public function edit(Chrip $chrip)
     {
-        //
+        $this->authorize('update', $chrip);
+
+        return view('chrips.edit', [
+            'chrip' => $chrip
+        ]);
     }
 
     /**
@@ -77,7 +81,15 @@ class ChripController extends Controller
      */
     public function update(Request $request, Chrip $chrip)
     {
-        //
+        $this->authorize('update', $chrip);
+
+        $validated = $request->validate([
+            'message' => 'required|max:255|string',
+        ]);
+
+        $chrip->update($validated);
+
+        return redirect(route('chrips.index'));
     }
 
     /**
