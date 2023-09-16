@@ -8,9 +8,9 @@
             <x-primary-button class="mt-4">{{ __('chrip') }}</x-primary-button>
         </form>
 
-        <section class="mt-9 bg-white shadow-sm rounded-lg divide-y px-5 py-6">
+        <section class="mt-9 bg-white shadow-sm rounded-lg divide-y px-5 py-3">
             @foreach ($chrips as $chrip)
-                <div class="flex space-x-3 mb-4">
+                <div class="flex space-x-3 mb-2 p-3">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 -scale-x-100" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round"
