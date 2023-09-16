@@ -14,7 +14,7 @@ class ChripController extends Controller
      */
     public function index()
     {
-        return response('Hellow World!');
+        return view('chirps.index');
     }
 
     /**
