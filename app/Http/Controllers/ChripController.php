@@ -14,7 +14,9 @@ class ChripController extends Controller
      */
     public function index()
     {
-        return view('chirps.index');
+        return view('chirps.index', [
+            'chirps' => Chrip::with('user')->latest()->get(),
+        ]);
     }
 
     /**
@@ -38,6 +40,7 @@ class ChripController extends Controller
         $validated = $request->validate([
             'message' => 'required|string|max:255'
         ]);
+
         $request->user()->chirps()->create($validated);
 
         return redirect(route('chirps.index'));
