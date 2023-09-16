@@ -100,6 +100,10 @@ class ChripController extends Controller
      */
     public function destroy(Chrip $chrip)
     {
-        //
+        $this->authorize('delete', $chrip);
+
+        $chrip->delete();
+
+        return redirect(route('chrips.index'));
     }
 }

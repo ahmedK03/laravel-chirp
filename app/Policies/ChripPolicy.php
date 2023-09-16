@@ -65,7 +65,9 @@ class ChripPolicy
      */
     public function delete(User $user, Chrip $chrip)
     {
-        //
+        // Anyone that is authorized to update a Chirp will now be authorized to delete it as well.
+        return $this->update($user, $chrip);
+
     }
 
     /**
